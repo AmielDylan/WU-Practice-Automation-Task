@@ -1,0 +1,12 @@
+﻿{
+  "Name": "Chrome Nouvel onglet",
+  "Type": "App",
+  "Id": "QpbDUAmXtE2uwq_UxwsnSQ",
+  "Reference": "vgpzRA0veUqNTiUWvwTeTg/QpbDUAmXtE2uwq_UxwsnSQ",
+  "Created": "2025-08-29T11:52:11.8056292Z",
+  "Updated": "2025-08-29T11:52:11.8056292Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=24.10.10.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.6.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}
