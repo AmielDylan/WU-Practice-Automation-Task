@@ -114,13 +114,13 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="518,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]" />
-    <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window" sap:VirtualizedContainerService.HintSize="552,2512.6666666666665" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="4d5d2ae5e3aca2d96672a7fb613d9c75" Selector="&lt;wnd app='msedge.exe' cls='Chrome_WidgetWin_1' title='ParaBank *' /&gt;">
+    <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window" sap:VirtualizedContainerService.HintSize="552,2275.3333333333335" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="4d5d2ae5e3aca2d96672a7fb613d9c75" Selector="&lt;wnd app='msedge.exe' cls='Chrome_WidgetWin_1' title='ParaBank *' /&gt;">
       <ui:WindowScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="518,2365.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="518,2128" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -482,7 +482,7 @@
                 </If.Else>
               </If>
             </Sequence>
-            <Sequence DisplayName="Sequence : Open New Account" sap:VirtualizedContainerService.HintSize="484,1052" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <Sequence DisplayName="Sequence : Open New Account" sap:VirtualizedContainerService.HintSize="484,814.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_4">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -586,15 +586,15 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:UiElementExists>
-              <If Condition="[accountOpened]" sap:VirtualizedContainerService.HintSize="450,730.6666666666666" sap2010:WorkflowViewState.IdRef="If_2">
+              <If Condition="[accountOpened]" sap:VirtualizedContainerService.HintSize="450,493.3333333333333" sap2010:WorkflowViewState.IdRef="If_2">
                 <If.Then>
-                  <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,477.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                  <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,222.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_9">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Account Id" sap:VirtualizedContainerService.HintSize="382,139.33333333333334" sap2010:WorkflowViewState.IdRef="GetValue_1">
+                    <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Account Id" sap:VirtualizedContainerService.HintSize="382,57.333333333333336" sap2010:WorkflowViewState.IdRef="GetValue_1">
                       <ui:GetValue.Target>
                         <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="d4616e23-5ed7-4ce6-a1ed-8f265e05dfd1" InformativeScreenshot="421afc34f5d3231a29dd666e61c40279" Selector="&lt;html app='msedge.exe' title='ParaBank | Open Account' /&gt;&lt;webctrl id='newAccountId' tag='A' /&gt;">
                           <ui:Target.TimeoutMS>
@@ -608,6 +608,12 @@
                       <ui:GetValue.Value>
                         <OutArgument x:TypeArguments="x:String">[accountId]</OutArgument>
                       </ui:GetValue.Value>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
                     </ui:GetValue>
                     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="382,57.333333333333336" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;User new account successfully opened&quot;]">
                       <sap:WorkflowViewStateService.ViewState>
@@ -617,7 +623,7 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:LogMessage>
-                    <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item" sap:VirtualizedContainerService.HintSize="382,220.66666666666666" sap2010:WorkflowViewState.IdRef="AddQueueItem_4" Priority="Normal" QueueType="[in_Config(&quot;Reporting Queue&quot;).ToString]" Reference="[in_TransactionItem.SpecificContent(&quot;SSN&quot;).ToString]">
+                    <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item" sap:VirtualizedContainerService.HintSize="382,48" sap2010:WorkflowViewState.IdRef="AddQueueItem_4" Priority="Normal" QueueType="[in_Config(&quot;Reporting Queue&quot;).ToString]" Reference="[in_TransactionItem.SpecificContent(&quot;SSN&quot;).ToString]">
                       <ui:AddQueueItem.ItemInformation>
                         <InArgument x:TypeArguments="x:String" x:Key="Operation">Performer</InArgument>
                         <InArgument x:TypeArguments="x:String" x:Key="User">[in_TransactionItem.SpecificContent("First name").ToString + " " + in_TransactionItem.SpecificContent("Last Name").ToString]</InArgument>
@@ -631,7 +637,7 @@
                       </ui:AddQueueItem.ItemInformation>
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
@@ -639,12 +645,31 @@
                   </Sequence>
                 </If.Then>
                 <If.Else>
-                  <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,90.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                  <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,108" sap2010:WorkflowViewState.IdRef="Sequence_10">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
+                    <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item" sap:VirtualizedContainerService.HintSize="382,48" sap2010:WorkflowViewState.IdRef="AddQueueItem_5" Priority="Normal" QueueType="[in_Config(&quot;Reporting Queue&quot;).ToString]" Reference="[in_TransactionItem.SpecificContent(&quot;SSN&quot;).ToString]">
+                      <ui:AddQueueItem.ItemInformation>
+                        <InArgument x:TypeArguments="x:String" x:Key="Operation">Performer</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="User">[in_TransactionItem.SpecificContent("First name").ToString + " " + in_TransactionItem.SpecificContent("Last Name").ToString]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="Status">OK</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="Message">An error occurred while opening the new account.</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="DOB">[in_TransactionItem.SpecificContent("DOB").ToString]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="Debit Card">[in_TransactionItem.SpecificContent("Debit Card").ToString]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="CVV">[in_TransactionItem.SpecificContent("CVV").ToString]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="Date">[Date.Now.ToLocalTime.ToShortDateString]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="Action">Open New Account</InArgument>
+                      </ui:AddQueueItem.ItemInformation>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:AddQueueItem>
                   </Sequence>
                 </If.Else>
               </If>
