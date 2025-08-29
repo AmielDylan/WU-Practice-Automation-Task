@@ -100,7 +100,7 @@
       <AssemblyReference>NPOI.Core</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Open applications used in the process and do necessary initialization procedures (e.g., login)." DisplayName="Initialize All Applications" sap:VirtualizedContainerService.HintSize="649.9999999999999,570" sap2010:WorkflowViewState.IdRef="Sequence_9">
+  <Sequence sap2010:Annotation.AnnotationText="Open applications used in the process and do necessary initialization procedures (e.g., login)." DisplayName="Initialize All Applications" sap:VirtualizedContainerService.HintSize="633.9999999999999,570" sap2010:WorkflowViewState.IdRef="Sequence_9">
     <Sequence.Variables>
       <Variable x:TypeArguments="ui:Browser" Name="browser" />
     </Sequence.Variables>
@@ -136,7 +136,7 @@
                 </ui:CursorPosition>
               </ui:Click.CursorPosition>
               <ui:Click.Target>
-                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="761eb3a7-e2f9-46ef-8f3f-f4b9dc4de021" InformativeScreenshot="e0892aa44e500589dd1dc0d8c031d7f1" Selector="&lt;wnd app='msedge.exe' cls='Chrome_WidgetWin_1' title='ParaBank | Customer Created - Personnel – Microsoft​ Edge' /&gt;&lt;ctrl name='ParaBank | Customer Created - Microsoft Edge' role='pane' /&gt;&lt;ctrl name='Agrandir' role='push button' /&gt;">
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="761eb3a7-e2f9-46ef-8f3f-f4b9dc4de021" InformativeScreenshot="e0892aa44e500589dd1dc0d8c031d7f1" Selector="&lt;wnd app='msedge.exe' cls='Chrome_WidgetWin_1' title='ParaBank *' /&gt;&lt;ctrl name='ParaBank *' role='pane' /&gt;&lt;ctrl name='Agrandir' role='push button' /&gt;">
                   <ui:Target.TimeoutMS>
                     <InArgument x:TypeArguments="x:Int32" />
                   </ui:Target.TimeoutMS>
