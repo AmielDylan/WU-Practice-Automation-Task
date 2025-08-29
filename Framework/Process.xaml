@@ -41,6 +41,7 @@
       <x:String>UiPath.UIAutomationNext.Enums</x:String>
       <x:String>UiPath.UIAutomationCore.Contracts</x:String>
       <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Reflection</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -95,9 +96,17 @@
       <AssemblyReference>NPOI.Core</AssemblyReference>
       <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
       <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Reflection.MetadataLoadContext</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="633.9999999999999,866.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="accountId" />
+      <Variable x:TypeArguments="x:Boolean" Name="accountOpened" />
+    </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -105,19 +114,22 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="518,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]" />
-    <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window" sap:VirtualizedContainerService.HintSize="518,1159.3333333333333" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="4d5d2ae5e3aca2d96672a7fb613d9c75" Selector="&lt;wnd app='msedge.exe' cls='Chrome_WidgetWin_1' title='ParaBank *' /&gt;">
+    <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window" sap:VirtualizedContainerService.HintSize="552,2512.6666666666665" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="4d5d2ae5e3aca2d96672a7fb613d9c75" Selector="&lt;wnd app='msedge.exe' cls='Chrome_WidgetWin_1' title='ParaBank *' /&gt;">
       <ui:WindowScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="484,1012" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="518,2365.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Sequence DisplayName="Sequence : Sign In User" sap:VirtualizedContainerService.HintSize="450,518.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <Sequence DisplayName="Sequence : Sign In User" sap:VirtualizedContainerService.HintSize="484,942.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_3">
+              <Sequence.Variables>
+                <Variable x:TypeArguments="x:Boolean" Name="accountCreated" />
+              </Sequence.Variables>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -151,7 +163,7 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:Click>
-              <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into First Name field" sap:VirtualizedContainerService.HintSize="416,189.33333333333334" sap2010:WorkflowViewState.IdRef="TypeInto_1" Text="[in_TransactionItem.SpecificContent(&quot;First Name&quot;).ToString]">
+              <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into First Name field" sap:VirtualizedContainerService.HintSize="416,57.333333333333336" sap2010:WorkflowViewState.IdRef="TypeInto_1" Text="[in_TransactionItem.SpecificContent(&quot;First Name&quot;).ToString]">
                 <ui:TypeInto.Target>
                   <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="4e6042f6-7567-40cc-9fc3-0b0756b18ba3" InformativeScreenshot="5dbf9527634d746bc85a37f99900af54" Selector="&lt;html app='msedge.exe' title='ParaBank *' /&gt;&lt;webctrl tag='TABLE' /&gt;&lt;webctrl id='customer.firstName' tableRow='1' tag='INPUT' /&gt;">
                     <ui:Target.TimeoutMS>
@@ -162,8 +174,14 @@
                     </ui:Target.WaitForReady>
                   </ui:Target>
                 </ui:TypeInto.Target>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
               </ui:TypeInto>
-              <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into Last Name field" sap:VirtualizedContainerService.HintSize="416,180" sap2010:WorkflowViewState.IdRef="TypeInto_2" Text="[in_TransactionItem.SpecificContent(&quot;Last Name&quot;).ToString]">
+              <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into Last Name field" sap:VirtualizedContainerService.HintSize="416,57.333333333333336" sap2010:WorkflowViewState.IdRef="TypeInto_2" Text="[in_TransactionItem.SpecificContent(&quot;Last Name&quot;).ToString]">
                 <ui:TypeInto.Target>
                   <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="4e6042f6-7567-40cc-9fc3-0b0756b18ba3" InformativeScreenshot="0c273e453d19b26da03ccba141d9c59a" Selector="&lt;html app='msedge.exe' title='ParaBank | Register for Free Online Account Access' /&gt;&lt;webctrl tag='TABLE' /&gt;&lt;webctrl id='customer.lastName' tableRow='2' tag='INPUT' /&gt;">
                     <ui:Target.TimeoutMS>
@@ -174,23 +192,471 @@
                     </ui:Target.WaitForReady>
                   </ui:Target>
                 </ui:TypeInto.Target>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
               </ui:TypeInto>
+              <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into Address field" sap:VirtualizedContainerService.HintSize="416,57.333333333333336" sap2010:WorkflowViewState.IdRef="TypeInto_3" Text="[in_TransactionItem.SpecificContent(&quot;Address&quot;).ToString]">
+                <ui:TypeInto.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="4e6042f6-7567-40cc-9fc3-0b0756b18ba3" InformativeScreenshot="6a9661558371ccafa9bc4bff80dc675c" Selector="&lt;html app='msedge.exe' title='ParaBank *' /&gt;&lt;webctrl tag='TABLE' /&gt;&lt;webctrl id='customer.address.street' tableRow='3' tag='INPUT' rowName='Address:' /&gt;">
+                    <ui:Target.TimeoutMS>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:Target.TimeoutMS>
+                    <ui:Target.WaitForReady>
+                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                    </ui:Target.WaitForReady>
+                  </ui:Target>
+                </ui:TypeInto.Target>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:TypeInto>
+              <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into City field" sap:VirtualizedContainerService.HintSize="416,57.333333333333336" sap2010:WorkflowViewState.IdRef="TypeInto_4" Text="[in_TransactionItem.SpecificContent(&quot;City&quot;).ToString]">
+                <ui:TypeInto.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="4e6042f6-7567-40cc-9fc3-0b0756b18ba3" InformativeScreenshot="779a42e0c4f2d31f3db895296cc35ca9" Selector="&lt;html app='msedge.exe' title='ParaBank *' /&gt;&lt;webctrl tag='TABLE' /&gt;&lt;webctrl id='customer.address.city' tableRow='4' tag='INPUT' rowName='City:' /&gt;">
+                    <ui:Target.TimeoutMS>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:Target.TimeoutMS>
+                    <ui:Target.WaitForReady>
+                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                    </ui:Target.WaitForReady>
+                  </ui:Target>
+                </ui:TypeInto.Target>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:TypeInto>
+              <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into State field" sap:VirtualizedContainerService.HintSize="416,57.333333333333336" sap2010:WorkflowViewState.IdRef="TypeInto_5" Text="[in_TransactionItem.SpecificContent(&quot;State&quot;).ToString]">
+                <ui:TypeInto.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="4e6042f6-7567-40cc-9fc3-0b0756b18ba3" InformativeScreenshot="ef21983f9cafcc55038ba107a6a1ed58" Selector="&lt;html app='msedge.exe' title='ParaBank *' /&gt;&lt;webctrl tag='TABLE' /&gt;&lt;webctrl id='customer.address.state' tableRow='5' tag='INPUT' rowName='State:' /&gt;">
+                    <ui:Target.TimeoutMS>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:Target.TimeoutMS>
+                    <ui:Target.WaitForReady>
+                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                    </ui:Target.WaitForReady>
+                  </ui:Target>
+                </ui:TypeInto.Target>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:TypeInto>
+              <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into Zip Code field" sap:VirtualizedContainerService.HintSize="416,57.333333333333336" sap2010:WorkflowViewState.IdRef="TypeInto_6" Text="[in_TransactionItem.SpecificContent(&quot;Zip Code&quot;).ToString]">
+                <ui:TypeInto.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="4e6042f6-7567-40cc-9fc3-0b0756b18ba3" InformativeScreenshot="b049bb84792f5e260feca006e078e3fa" Selector="&lt;html app='msedge.exe' title='ParaBank *' /&gt;&lt;webctrl tag='TABLE' /&gt;&lt;webctrl id='customer.address.zipCode' tableRow='6' tag='INPUT' rowName='Zip Code:' /&gt;">
+                    <ui:Target.TimeoutMS>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:Target.TimeoutMS>
+                    <ui:Target.WaitForReady>
+                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                    </ui:Target.WaitForReady>
+                  </ui:Target>
+                </ui:TypeInto.Target>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:TypeInto>
+              <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into Last Name field" sap:VirtualizedContainerService.HintSize="416,57.333333333333336" sap2010:WorkflowViewState.IdRef="TypeInto_7" Text="[in_TransactionItem.SpecificContent(&quot;Phone Number&quot;).ToString]">
+                <ui:TypeInto.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="4e6042f6-7567-40cc-9fc3-0b0756b18ba3" InformativeScreenshot="f2ae915fdec21336df739c439aa5ab61" Selector="&lt;html app='msedge.exe' title='ParaBank *' /&gt;&lt;webctrl tag='TABLE' /&gt;&lt;webctrl id='customer.phoneNumber' tableRow='7' tag='INPUT' name='customer.phoneNumber' /&gt;">
+                    <ui:Target.TimeoutMS>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:Target.TimeoutMS>
+                    <ui:Target.WaitForReady>
+                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                    </ui:Target.WaitForReady>
+                  </ui:Target>
+                </ui:TypeInto.Target>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:TypeInto>
+              <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into SSN field" sap:VirtualizedContainerService.HintSize="416,57.333333333333336" sap2010:WorkflowViewState.IdRef="TypeInto_8" Text="[in_TransactionItem.SpecificContent(&quot;SSN&quot;).ToString]">
+                <ui:TypeInto.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="4e6042f6-7567-40cc-9fc3-0b0756b18ba3" InformativeScreenshot="4066be337d9f9e902d1de9c8884145c4" Selector="&lt;html app='msedge.exe' title='ParaBank *' /&gt;&lt;webctrl tag='TABLE' /&gt;&lt;webctrl id='customer.ssn' tableRow='8' tag='INPUT' rowName='SSN:' /&gt;">
+                    <ui:Target.TimeoutMS>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:Target.TimeoutMS>
+                    <ui:Target.WaitForReady>
+                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                    </ui:Target.WaitForReady>
+                  </ui:Target>
+                </ui:TypeInto.Target>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:TypeInto>
+              <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into Username field" sap:VirtualizedContainerService.HintSize="416,57.333333333333336" sap2010:WorkflowViewState.IdRef="TypeInto_9" Text="[in_TransactionItem.SpecificContent(&quot;Username Name&quot;).ToString]">
+                <ui:TypeInto.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="4e6042f6-7567-40cc-9fc3-0b0756b18ba3" InformativeScreenshot="90def6d1a34d95a709dc6d86710ee067" Selector="&lt;html app='msedge.exe' title='ParaBank *' /&gt;&lt;webctrl tag='TABLE' /&gt;&lt;webctrl id='customer.username' tableRow='10' tag='INPUT' class='input' rowName='Username:' /&gt;">
+                    <ui:Target.TimeoutMS>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:Target.TimeoutMS>
+                    <ui:Target.WaitForReady>
+                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                    </ui:Target.WaitForReady>
+                  </ui:Target>
+                </ui:TypeInto.Target>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:TypeInto>
+              <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into Password field" sap:VirtualizedContainerService.HintSize="416,57.333333333333336" sap2010:WorkflowViewState.IdRef="TypeInto_10" Text="[in_TransactionItem.SpecificContent(&quot;Password&quot;).ToString]">
+                <ui:TypeInto.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="4e6042f6-7567-40cc-9fc3-0b0756b18ba3" InformativeScreenshot="4491a3ad721b47073c4b1c32820055f6" Selector="&lt;html app='msedge.exe' title='ParaBank *' /&gt;&lt;webctrl tag='TABLE' /&gt;&lt;webctrl id='customer.password' tableRow='11' tag='INPUT' rowName='Password:' type='password' /&gt;">
+                    <ui:Target.TimeoutMS>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:Target.TimeoutMS>
+                    <ui:Target.WaitForReady>
+                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                    </ui:Target.WaitForReady>
+                  </ui:Target>
+                </ui:TypeInto.Target>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:TypeInto>
+              <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into Password Confirm field" sap:VirtualizedContainerService.HintSize="416,57.333333333333336" sap2010:WorkflowViewState.IdRef="TypeInto_11" Text="[in_TransactionItem.SpecificContent(&quot;Password&quot;).ToString]">
+                <ui:TypeInto.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="4e6042f6-7567-40cc-9fc3-0b0756b18ba3" InformativeScreenshot="3e0eccf72e1cb14af4762e289134241f" Selector="&lt;html app='msedge.exe' title='ParaBank *' /&gt;&lt;webctrl tag='TABLE' /&gt;&lt;webctrl id='repeatedPassword' tableRow='12' tag='INPUT' name='repeatedPassword' type='password' /&gt;">
+                    <ui:Target.TimeoutMS>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:Target.TimeoutMS>
+                    <ui:Target.WaitForReady>
+                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                    </ui:Target.WaitForReady>
+                  </ui:Target>
+                </ui:TypeInto.Target>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:TypeInto>
+              <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Register Button" sap:VirtualizedContainerService.HintSize="416,57.333333333333336" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT">
+                <ui:Click.CursorPosition>
+                  <ui:CursorPosition Position="Center">
+                    <ui:CursorPosition.OffsetX>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:CursorPosition.OffsetX>
+                    <ui:CursorPosition.OffsetY>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:CursorPosition.OffsetY>
+                  </ui:CursorPosition>
+                </ui:Click.CursorPosition>
+                <ui:Click.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="02c4a721-66f7-47a3-b4a8-07f542f477b3" InformativeScreenshot="56f73f5c2f6f67ba7254bea081c86951" Selector="&lt;html app='msedge.exe' title='ParaBank *' /&gt;&lt;webctrl tag='TABLE' /&gt;&lt;webctrl tableRow='13' tag='INPUT' aaname='Register' class='button' /&gt;">
+                    <ui:Target.TimeoutMS>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:Target.TimeoutMS>
+                    <ui:Target.WaitForReady>
+                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                    </ui:Target.WaitForReady>
+                  </ui:Target>
+                </ui:Click.Target>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:Click>
+              <ui:UiElementExists DisplayName="Element Welcome Exist ?" Exists="[accountCreated]" sap:VirtualizedContainerService.HintSize="416,57.333333333333336" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+                <ui:UiElementExists.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="ea54e738-5804-4f23-9422-ddd0766ca763" InformativeScreenshot="1fb74ecdec4be52bec0215293d36991c" Selector="&lt;html app='msedge.exe' title='ParaBank | Customer Created' /&gt;&lt;webctrl tag='H1' /&gt;">
+                    <ui:Target.TimeoutMS>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:Target.TimeoutMS>
+                    <ui:Target.WaitForReady>
+                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                    </ui:Target.WaitForReady>
+                  </ui:Target>
+                </ui:UiElementExists.Target>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:UiElementExists>
+              <If Condition="[accountCreated]" DisplayName="If User Account is created successfully" sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="If_1">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <If.Then>
+                  <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,25.333333333333332" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="382,57.333333333333336" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;User account was created successfully.&quot;]">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:LogMessage>
+                    <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item" sap:VirtualizedContainerService.HintSize="382,48" sap2010:WorkflowViewState.IdRef="AddQueueItem_2" Priority="Normal" QueueType="[in_Config(&quot;Reporting Queue&quot;).ToString]" Reference="[in_TransactionItem.SpecificContent(&quot;SSN&quot;).ToString]">
+                      <ui:AddQueueItem.ItemInformation>
+                        <InArgument x:TypeArguments="x:String" x:Key="Operation">Performer</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="User">[in_TransactionItem.SpecificContent("First name").ToString + " " + in_TransactionItem.SpecificContent("Last Name").ToString]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="Status">OK</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="Message">User account was created successfully</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="DOB">[in_TransactionItem.SpecificContent("DOB").ToString]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="Debit Card">[in_TransactionItem.SpecificContent("Debit Card").ToString]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="CVV">[in_TransactionItem.SpecificContent("CVV").ToString]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="Date">[Date.Now.ToLocalTime.ToShortDateString]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="Action">Sign In User</InArgument>
+                      </ui:AddQueueItem.ItemInformation>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:AddQueueItem>
+                  </Sequence>
+                </If.Then>
+                <If.Else>
+                  <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,25.333333333333332" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item" sap:VirtualizedContainerService.HintSize="382,48" sap2010:WorkflowViewState.IdRef="AddQueueItem_3" Priority="Normal" QueueType="[in_Config(&quot;Reporting Queue&quot;).ToString]" Reference="[in_TransactionItem.SpecificContent(&quot;SSN&quot;).ToString]">
+                      <ui:AddQueueItem.ItemInformation>
+                        <InArgument x:TypeArguments="x:String" x:Key="Operation">Performer</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="User">[in_TransactionItem.SpecificContent("First name").ToString + " " + in_TransactionItem.SpecificContent("Last Name").ToString]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="Status">KO</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="Message">An error occurred while signin in the user.</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="DOB">[in_TransactionItem.SpecificContent("DOB").ToString]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="Debit Card">[in_TransactionItem.SpecificContent("Debit Card").ToString]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="CVV">[in_TransactionItem.SpecificContent("CVV").ToString]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="Date">[Date.Now.ToLocalTime.ToShortDateString]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="Action">Sign In User</InArgument>
+                      </ui:AddQueueItem.ItemInformation>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:AddQueueItem>
+                  </Sequence>
+                </If.Else>
+              </If>
             </Sequence>
-            <Sequence DisplayName="Sequence : Open New Account" sap:VirtualizedContainerService.HintSize="450,122.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <Sequence DisplayName="Sequence : Open New Account" sap:VirtualizedContainerService.HintSize="484,1052" sap2010:WorkflowViewState.IdRef="Sequence_4">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Open New Account" sap:VirtualizedContainerService.HintSize="450,57.333333333333336" sap2010:WorkflowViewState.IdRef="Click_4" KeyModifiers="None" MouseButton="BTN_LEFT">
+                <ui:Click.CursorPosition>
+                  <ui:CursorPosition Position="Center">
+                    <ui:CursorPosition.OffsetX>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:CursorPosition.OffsetX>
+                    <ui:CursorPosition.OffsetY>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:CursorPosition.OffsetY>
+                  </ui:CursorPosition>
+                </ui:Click.CursorPosition>
+                <ui:Click.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="15b793c6-e304-4c2e-878e-025cad96b916" InformativeScreenshot="ba98ab527ebb348f95dd83352bf311a2" Selector="&lt;html app='msedge.exe' title='ParaBank *' /&gt;&lt;webctrl parentid='leftPanel' tag='A' aaname='Open New Account' innertext='Open New Account' /&gt;">
+                    <ui:Target.TimeoutMS>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:Target.TimeoutMS>
+                    <ui:Target.WaitForReady>
+                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                    </ui:Target.WaitForReady>
+                  </ui:Target>
+                </ui:Click.Target>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:Click>
+              <ui:SelectItem AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Select Account Type" sap:VirtualizedContainerService.HintSize="450,57.333333333333336" sap2010:WorkflowViewState.IdRef="SelectItem_1" Item="[in_TransactionItem.SpecificContent(&quot;Account Type&quot;).ToString.ToUpper]">
+                <ui:SelectItem.Items>
+                  <scg:List x:TypeArguments="x:String" Capacity="4">
+                    <x:String>CHECKING</x:String>
+                    <x:String>SAVINGS</x:String>
+                  </scg:List>
+                </ui:SelectItem.Items>
+                <ui:SelectItem.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="5ea8e6f6-1504-4894-9187-6e2a7a3fc8fb" InformativeScreenshot="1ad34a09313b70f3c7cc9c5dc7e4b61d" Selector="&lt;html app='msedge.exe' title='ParaBank *' /&gt;&lt;webctrl id='type' tag='SELECT' class='input' visibleinnertext='CHECKING&amp;#xA;SAVINGS' /&gt;">
+                    <ui:Target.TimeoutMS>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:Target.TimeoutMS>
+                    <ui:Target.WaitForReady>
+                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                    </ui:Target.WaitForReady>
+                  </ui:Target>
+                </ui:SelectItem.Target>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:SelectItem>
+              <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Open New Account" sap:VirtualizedContainerService.HintSize="450,57.333333333333336" sap2010:WorkflowViewState.IdRef="Click_5" KeyModifiers="None" MouseButton="BTN_LEFT">
+                <ui:Click.CursorPosition>
+                  <ui:CursorPosition Position="Center">
+                    <ui:CursorPosition.OffsetX>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:CursorPosition.OffsetX>
+                    <ui:CursorPosition.OffsetY>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:CursorPosition.OffsetY>
+                  </ui:CursorPosition>
+                </ui:Click.CursorPosition>
+                <ui:Click.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b3f41627-f03f-478d-81d7-e2e25a20f333" InformativeScreenshot="9510c2ee3ed2b8d5a57e027b56c9e142" Selector="&lt;html app='msedge.exe' title='ParaBank *' /&gt;&lt;webctrl tag='INPUT' class='button' value='Open New Account' /&gt;">
+                    <ui:Target.TimeoutMS>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:Target.TimeoutMS>
+                    <ui:Target.WaitForReady>
+                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                    </ui:Target.WaitForReady>
+                  </ui:Target>
+                </ui:Click.Target>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:Click>
+              <ui:UiElementExists DisplayName="Element Account Opened Exists ?" Exists="[accountOpened]" sap:VirtualizedContainerService.HintSize="450,57.333333333333336" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
+                <ui:UiElementExists.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="5b01e084-da78-4f20-ac32-79e00d46430d" InformativeScreenshot="1ab41e75206f20690e2b4010996cedcf" Selector="&lt;html app='msedge.exe' title='ParaBank | Open Account' /&gt;&lt;webctrl parentid='openAccountResult' tag='H1' /&gt;">
+                    <ui:Target.TimeoutMS>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:Target.TimeoutMS>
+                    <ui:Target.WaitForReady>
+                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                    </ui:Target.WaitForReady>
+                  </ui:Target>
+                </ui:UiElementExists.Target>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:UiElementExists>
+              <If Condition="[accountOpened]" sap:VirtualizedContainerService.HintSize="450,730.6666666666666" sap2010:WorkflowViewState.IdRef="If_2">
+                <If.Then>
+                  <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,477.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Account Id" sap:VirtualizedContainerService.HintSize="382,139.33333333333334" sap2010:WorkflowViewState.IdRef="GetValue_1">
+                      <ui:GetValue.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="d4616e23-5ed7-4ce6-a1ed-8f265e05dfd1" InformativeScreenshot="421afc34f5d3231a29dd666e61c40279" Selector="&lt;html app='msedge.exe' title='ParaBank | Open Account' /&gt;&lt;webctrl id='newAccountId' tag='A' /&gt;">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:GetValue.Target>
+                      <ui:GetValue.Value>
+                        <OutArgument x:TypeArguments="x:String">[accountId]</OutArgument>
+                      </ui:GetValue.Value>
+                    </ui:GetValue>
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="382,57.333333333333336" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;User new account successfully opened&quot;]">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:LogMessage>
+                    <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item" sap:VirtualizedContainerService.HintSize="382,220.66666666666666" sap2010:WorkflowViewState.IdRef="AddQueueItem_4" Priority="Normal" QueueType="[in_Config(&quot;Reporting Queue&quot;).ToString]" Reference="[in_TransactionItem.SpecificContent(&quot;SSN&quot;).ToString]">
+                      <ui:AddQueueItem.ItemInformation>
+                        <InArgument x:TypeArguments="x:String" x:Key="Operation">Performer</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="User">[in_TransactionItem.SpecificContent("First name").ToString + " " + in_TransactionItem.SpecificContent("Last Name").ToString]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="Status">OK</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="Message">["User Account successfully opened with ID : " + accountId]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="DOB">[in_TransactionItem.SpecificContent("DOB").ToString]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="Debit Card">[in_TransactionItem.SpecificContent("Debit Card").ToString]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="CVV">[in_TransactionItem.SpecificContent("CVV").ToString]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="Date">[Date.Now.ToLocalTime.ToShortDateString]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="Action">Open New Account</InArgument>
+                      </ui:AddQueueItem.ItemInformation>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:AddQueueItem>
+                  </Sequence>
+                </If.Then>
+                <If.Else>
+                  <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,90.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </Sequence>
+                </If.Else>
+              </If>
+            </Sequence>
+            <Sequence DisplayName="Sequence : Request Loan" sap:VirtualizedContainerService.HintSize="484,122.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_5">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </Sequence>
-            <Sequence DisplayName="Sequence : Request Loan" sap:VirtualizedContainerService.HintSize="450,122.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_5">
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-            </Sequence>
-            <Sequence DisplayName="Sequence : Log Out" sap:VirtualizedContainerService.HintSize="450,188" sap2010:WorkflowViewState.IdRef="Sequence_6">
+            <Sequence DisplayName="Sequence : Log Out" sap:VirtualizedContainerService.HintSize="484,188" sap2010:WorkflowViewState.IdRef="Sequence_6">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -230,7 +696,7 @@
                   <InArgument x:TypeArguments="x:String" x:Key="Operation">Performer</InArgument>
                   <InArgument x:TypeArguments="x:String" x:Key="User">[in_TransactionItem.SpecificContent("First name").ToString + " " + in_TransactionItem.SpecificContent("Last Name").ToString]</InArgument>
                   <InArgument x:TypeArguments="x:String" x:Key="Status">OK</InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="Message">User Logged Out Sueccessfully</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="Message">User Logged Out Successfully</InArgument>
                   <InArgument x:TypeArguments="x:String" x:Key="DOB">[in_TransactionItem.SpecificContent("DOB").ToString]</InArgument>
                   <InArgument x:TypeArguments="x:String" x:Key="Debit Card">[in_TransactionItem.SpecificContent("Debit Card").ToString]</InArgument>
                   <InArgument x:TypeArguments="x:String" x:Key="CVV">[in_TransactionItem.SpecificContent("CVV").ToString]</InArgument>
