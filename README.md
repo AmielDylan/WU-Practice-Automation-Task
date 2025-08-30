@@ -1,39 +1,68 @@
-### Documentation is included in the Documentation folder ###
+# ParaBank Automation – REFramework Project  
 
+## 📌 Description  
+This UiPath project automates user scenarios on the **ParaBank** demo banking site using the **Robotic Enterprise Framework (REFramework)**.  
+The solution is divided into two parts:  
+- **Dispatcher**: loads user data and pushes it into an Orchestrator Queue.  
+- **Performer**: processes each user transaction from the Queue.  
 
-### REFrameWork Template ###
-**Robotic Enterprise Framework**
+---
 
-* Built on top of *Transactional Business Process* template
-* Uses *State Machine* layout for the phases of automation project
-* Offers high level logging, exception handling and recovery
-* Keeps external settings in *Config.xlsx* file and Orchestrator assets
-* Pulls credentials from Orchestrator assets and *Windows Credential Manager*
-* Gets transaction data from Orchestrator queue and updates back status
-* Takes screenshots in case of system exceptions
+## 🏗 Architecture  
+- **Dispatcher**  
+  - Reads the provided CSV file.  
+  - Validates input data.  
+  - Adds one `QueueItem` per user to the Orchestrator Queue defined in `Config.xlsx`.  
 
+- **Performer (REFramework)**  
+  - Retrieves a transaction from the Queue.  
+  - Executes the following workflow steps:  
+    1. **Register** – Create a ParaBank account.  
+    2. **Open Account** – Open a new account with the initial deposit.  
+    3. **Request Loan** – Request a loan of **10,000 USD** with a down payment equal to **20% of the initial deposit**.  
+    4. **Report** – Generate a consolidated report with USD→EUR conversion.  
+    5. **Logout & Close** – End session cleanly.  
 
-### How It Works ###
+---
 
-1. **INITIALIZE PROCESS**
- + ./Framework/*InitiAllSettings* - Load configuration data from Config.xlsx file and from assets
- + ./Framework/*GetAppCredential* - Retrieve credentials from Orchestrator assets or local Windows Credential Manager
- + ./Framework/*InitiAllApplications* - Open and login to applications used throughout the process
+## ⚙️ Configuration  
+All configurable values are stored in **`Config.xlsx`** (located in the `Data/` folder).  
 
-2. **GET TRANSACTION DATA**
- + ./Framework/*GetTransactionData* - Fetches transactions from an Orchestrator queue defined by Config("OrchestratorQueueName") or any other configured data source
+### Key Sections  
+- **Settings**  
+  - `OrchestratorQueueName`: main queue for ParaBank users.  
+  - `ReportingQueue`: queue for reporting data.  
+  - `StorageBucketName`: Orchestrator storage bucket for report files.  
+  - `MaskReportSensitiveData`: `True/False` → defines whether sensitive data (password, CVV, credit card) should be masked in the report.  
 
-3. **PROCESS TRANSACTION**
- + *Process* - Process trasaction and invoke other workflows related to the process being automated 
- + ./Framework/*SetTransactionStatus* - Updates the status of the processed transaction (Orchestrator transactions by default): Success, Business Rule Exception or System Exception
+- **Constants**  
+  - `MaxRetryNumber`, `MaxConsecutiveSystemExceptions`, retry parameters for GetTransactionItem/SetTransactionStatus.  
+  - Standard log messages.  
+  - `ExScreenshotsFolderPath`: folder for saving screenshots in case of exceptions.
+  
+---
 
-4. **END PROCESS**
- + ./Framework/*CloseAllApplications* - Logs out and closes applications used throughout the process
+## 🔒 Security  
+- Passwords, CVVs, and credit card numbers are **masked by default** in the generated report.  
+- Credentials are retrieved from **Orchestrator Assets** or **Windows Credential Manager**.  
+- No Personally Identifiable Information is logged in clear text.  
 
+---
 
-### For New Project ###
+## 🚀 Execution Steps  
+1. Publish the project to Orchestrator.  
+2. Create necessary **Assets** in Orchestrator:  
+3. Create required **Queues**:  
+   - `ParaBank Users` (main user transactions).  
+   - `Reporting Queue` (report data).   
+4. Run the **Dispatcher** to populate the Queue.  
+5. Run the **Performer** to process transactions.  
 
-1. Check the Config.xlsx file and add/customize any required fields and values
-2. Implement InitiAllApplications.xaml and CloseAllApplicatoins.xaml workflows, linking them in the Config.xlsx fields
-3. Implement GetTransactionData.xaml and SetTransactionStatus.xaml according to the transaction type being used (Orchestrator queues by default)
-4. Implement Process.xaml workflow and invoke other workflows related to the process being automated
+---
+
+## 📊 Reporting  
+The automation generates an Excel file (default: `Data/Output/Automation Summary.xlsx`) containing:  
+- Customer details (name, masked email, DOB).  
+- Created account details (account number, balance).   
+- Conversion into EUR.  
+- Transaction status. 
