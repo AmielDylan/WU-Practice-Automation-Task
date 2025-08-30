@@ -216,20 +216,20 @@
                     </ui:MultipleAssign>
                     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="MaskSensitiveData - Debit Card" sap:VirtualizedContainerService.HintSize="478.6666666666667,177.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Helper\MaskSensitiveData.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_datatype">CARD</InArgument>
-                        <OutArgument x:TypeArguments="x:String" x:Key="out_maskedData">[debitCard]</OutArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_dataType">CARD</InArgument>
+                        <InOutArgument x:TypeArguments="x:String" x:Key="io_dataToMask">[debitCard]</InOutArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
                     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="MaskSensitiveData - DOB" sap:VirtualizedContainerService.HintSize="478.6666666666667,177.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Helper\MaskSensitiveData.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_datatype">DOB</InArgument>
-                        <OutArgument x:TypeArguments="x:String" x:Key="out_maskedData">[dob]</OutArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_dataType">DOB</InArgument>
+                        <InOutArgument x:TypeArguments="x:String" x:Key="io_dataToMask">[dob]</InOutArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
                     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="MaskSensitiveData - CVV" sap:VirtualizedContainerService.HintSize="478.6666666666667,168" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Helper\MaskSensitiveData.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_datatype">CVV</InArgument>
-                        <OutArgument x:TypeArguments="x:String" x:Key="out_maskedData">[cvv]</OutArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_dataType">CVV</InArgument>
+                        <InOutArgument x:TypeArguments="x:String" x:Key="io_dataToMask">[cvv]</InOutArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
                   </Sequence>

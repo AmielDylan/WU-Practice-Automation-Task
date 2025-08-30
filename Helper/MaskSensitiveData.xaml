@@ -1,7 +1,7 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="MaskSensitiveData" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="in_datatype" Type="InArgument(x:String)" />
-    <x:Property Name="out_maskedData" Type="OutArgument(x:String)" />
+    <x:Property Name="in_dataType" Type="InArgument(x:String)" />
+    <x:Property Name="io_dataToMask" Type="InOutArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
@@ -90,44 +90,43 @@
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="MaskSensitiveData" sap:VirtualizedContainerService.HintSize="606.6666666666666,466.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="MaskSensitiveData" sap:VirtualizedContainerService.HintSize="624,252.024" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[in_datatype]" sap:VirtualizedContainerService.HintSize="496.66666666666674,193.33333333333334" sap2010:WorkflowViewState.IdRef="Switch`1_2">
-      <Assign x:Key="DOB" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_4">
+    <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[in_dataType]" sap:VirtualizedContainerService.HintSize="496.6666666666667,216" sap2010:WorkflowViewState.IdRef="Switch`1_2">
+      <Assign x:Key="DOB" sap:VirtualizedContainerService.HintSize="200,25.333333333333332" sap2010:WorkflowViewState.IdRef="Assign_4">
         <Assign.To>
-          <OutArgument x:TypeArguments="x:String">[out_maskedData]</OutArgument>
+          <OutArgument x:TypeArguments="x:String">[io_dataToMask]</OutArgument>
         </Assign.To>
         <Assign.Value>
           <InArgument x:TypeArguments="x:String">**/**/****</InArgument>
         </Assign.Value>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </Assign>
       <Assign x:Key="CARD" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_1">
         <Assign.To>
-          <OutArgument x:TypeArguments="x:String">[out_maskedData]</OutArgument>
+          <OutArgument x:TypeArguments="x:String">[io_dataToMask]</OutArgument>
         </Assign.To>
         <Assign.Value>
-          <InArgument x:TypeArguments="x:String">[String.Concat(String.Join(" ", out_maskedData.Split(" ").Reverse().Skip(1).Reverse().Select(Function(s) String.Concat(Enumerable.Repeat("#", s.Length))).ToArray()), " ", out_maskedData.Split(" ").Last())]</InArgument>
+          <InArgument x:TypeArguments="x:String">[String.Concat(String.Join(" ", io_dataToMask.Split(" ").Reverse().Skip(1).Reverse().Select(Function(s) String.Concat(Enumerable.Repeat("#", s.Length))).ToArray()), " ", io_dataToMask.Split(" ").Last())]</InArgument>
         </Assign.Value>
       </Assign>
       <Assign x:Key="CVV" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_3">
         <Assign.To>
-          <OutArgument x:TypeArguments="x:String">[out_maskedData]</OutArgument>
+          <OutArgument x:TypeArguments="x:String">[io_dataToMask]</OutArgument>
         </Assign.To>
         <Assign.Value>
-          <InArgument x:TypeArguments="x:String">[New String("*".ToCharArray()(0), out_maskedData.Length)]</InArgument>
+          <InArgument x:TypeArguments="x:String">[New String("*".ToCharArray()(0), io_dataToMask.Length)]</InArgument>
         </Assign.Value>
       </Assign>
     </Switch>
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="496.6666666666667,114.66666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[out_maskedData]" />
   </Sequence>
 </Activity>
