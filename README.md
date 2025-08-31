@@ -55,8 +55,8 @@ All configurable values are stored in **`Config.xlsx`** (located in the `Data/` 
 3. Create required **Queues**:  
    - `ParaBank Users` (main user transactions).  
    - `Reporting Queue` (report data).   
-4. Run the **Dispatcher** to populate the Queue.  
-5. Run the **Performer** to process transactions.  
+4. Run the process to populate the Queue and process transactions.
+5. **Dispatcher** is integrated to the **REF**
 
 ---
 
@@ -66,3 +66,4 @@ The automation generates an Excel file (default: `Data/Output/Automation Summary
 - Created account details (account number, balance).   
 - Conversion into EUR.  
 - Transaction status. 
+
